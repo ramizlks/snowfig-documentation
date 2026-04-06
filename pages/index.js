@@ -16,7 +16,7 @@ export default function DocsIndex({ content }) {
 }
 
 export async function getStaticProps() {
-  const filePath = "/Users/ramiz/lks tech/SnowfigIP-BE/SnowfigIP-Documentation/README.md";
+  const filePath = path.join(process.cwd(), 'content', 'README.md');
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
   return {

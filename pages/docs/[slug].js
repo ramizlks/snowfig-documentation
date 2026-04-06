@@ -24,7 +24,7 @@ export default function DocPage({ content, slug }) {
 }
 
 export async function getStaticPaths() {
-  const docsDirectory = "/Users/ramiz/lks tech/SnowfigIP-BE/SnowfigIP-Documentation";
+  const docsDirectory = path.join(process.cwd(), 'content');
   const filenames = fs.readdirSync(docsDirectory);
 
   // Exclude README.md as it's served by index.js
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join("/Users/ramiz/lks tech/SnowfigIP-BE/SnowfigIP-Documentation", `${params.slug}.md`);
+  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
   return {
